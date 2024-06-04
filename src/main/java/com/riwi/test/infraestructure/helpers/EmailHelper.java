@@ -22,7 +22,7 @@ public class EmailHelper {
     private final JavaMailSender mailSender;
 
     private String readHTMLTemplate(String description, String title, String date){
-        final Path path = Paths.get("C:\\Users\\User\\Documents\\Estudio programación\\spring-riwi\\demo\\src\\main\\resources\\emails\\email_template.html");
+        final Path path = Paths.get("C:\\Users\\User\\Documents\\Estudio programación\\performance-test-spring\\src\\main\\resources\\emails\\email_template.html");
 
         try (var lines = Files.lines(path)){
             var html = lines.collect(Collectors.joining());
