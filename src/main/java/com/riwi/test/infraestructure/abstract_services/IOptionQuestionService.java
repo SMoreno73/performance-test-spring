@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface IOptionQuestionService
 {
-    void createOptionsFromQuestion(List<OptionQuestionRequest> files, Long questionId);
-    void updateOptionsFromQuestion(List<OptionFromQuestionRequest> files, Long questionId);
+    void createOptionsFromQuestion(List<OptionQuestionRequest> options, Long questionId);
+    void updateOptionsFromQuestion(List<OptionFromQuestionRequest> options, Long questionId);
 }

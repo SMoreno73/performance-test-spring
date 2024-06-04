@@ -41,8 +41,8 @@ public class Survey {
 
     @OneToMany(
             mappedBy = "surveyId",
-            cascade = CascadeType.ALL,
-            orphanRemoval = false,
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
             fetch = FetchType.EAGER
     )
     private List<Question> questions = new ArrayList<>();

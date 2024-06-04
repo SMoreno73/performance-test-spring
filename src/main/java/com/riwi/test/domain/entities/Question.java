@@ -28,7 +28,7 @@ public class Question {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "survey_id")
     private Survey surveyId;
 
@@ -36,8 +36,8 @@ public class Question {
 
     @OneToMany(
             mappedBy = "questionId",
-            cascade = CascadeType.ALL,
-            orphanRemoval = false,
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
             fetch = FetchType.EAGER
     )
     private List<OptionQuestion> options = new ArrayList<>();
