@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -29,4 +32,12 @@ public class Question {
     private Survey surveyId;
 
     private boolean active;
+
+    @OneToMany(
+            mappedBy = "questionId",
+            cascade = CascadeType.ALL,
+            orphanRemoval = false,
+            fetch = FetchType.EAGER
+    )
+    private List<OptionQuestion> optionsQuestions = new ArrayList<>();
 }

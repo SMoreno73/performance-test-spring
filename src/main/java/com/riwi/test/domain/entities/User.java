@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -27,4 +30,12 @@ public class User {
     private String password;
 
     private boolean active;
+
+    @OneToMany(
+            mappedBy = "creatorId",
+            cascade = CascadeType.ALL,
+            orphanRemoval = false,
+            fetch = FetchType.EAGER
+    )
+    private List<Survey> surveys = new ArrayList<>();
 }

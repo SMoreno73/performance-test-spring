@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Setter
@@ -35,4 +37,12 @@ public class Survey {
     private User creatorId;
 
     private boolean active;
+
+    @OneToMany(
+            mappedBy = "surveyId",
+            cascade = CascadeType.ALL,
+            orphanRemoval = false,
+            fetch = FetchType.EAGER
+    )
+    private List<Question> questions = new ArrayList<>();
 }
