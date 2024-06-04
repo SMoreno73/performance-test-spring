@@ -1,5 +1,6 @@
 package com.riwi.test.domain.entities;
 
+import com.riwi.test.util.enums.Type;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +25,8 @@ public class Question {
     @Column(columnDefinition = "TEXT")
     private String text;
 
-    @Column(length = 50)
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private Type type;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "survey_id")
@@ -39,5 +40,5 @@ public class Question {
             orphanRemoval = false,
             fetch = FetchType.EAGER
     )
-    private List<OptionQuestion> optionsQuestions = new ArrayList<>();
+    private List<OptionQuestion> options = new ArrayList<>();
 }
