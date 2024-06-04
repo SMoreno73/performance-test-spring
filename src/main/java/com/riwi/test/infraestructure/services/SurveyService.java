@@ -7,6 +7,7 @@ import com.riwi.test.domain.entities.User;
 import com.riwi.test.domain.repositories.SurveyRepository;
 import com.riwi.test.domain.repositories.UserRepository;
 import com.riwi.test.infraestructure.abstract_services.ISurveyService;
+import com.riwi.test.infraestructure.helpers.EmailHelper;
 import com.riwi.test.infraestructure.mappers.SurveyMapper;
 import com.riwi.test.util.exeptions.IdNotFoundException;
 import jakarta.transaction.Transactional;
@@ -32,6 +33,9 @@ public class SurveyService implements ISurveyService{
 
     @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
+    private final EmailHelper emailHelper;
 
         @Override
         public SurveyResponse create(SurveyRequest surveyRequest) {
