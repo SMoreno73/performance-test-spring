@@ -30,6 +30,7 @@ public class UserRequest {
     private String password;
 
 
-    @NotNull(message = "Active cannot be null")
+    @NotBlank(message = "Active cannot be null")
+    @Pattern(regexp = "true|false", message = "The type must be true or false")
     private String active;
 }

@@ -3,6 +3,7 @@ package com.riwi.test.api.error_handlers;
 
 import com.riwi.test.util.exeptions.IdNotFoundException;
 import com.riwi.test.util.exeptions.OptionsAreNull;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,6 +21,15 @@ import java.util.List;
 @RestControllerAdvice
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class BadRequestController {
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public BaseErrorResponse handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        return ErrorResponse.builder()
+                .message("There is a unique field that cannot be repeated [Survey: title].")
+                .status(HttpStatus.BAD_REQUEST.name())
+                .code(HttpStatus.BAD_REQUEST.value())
+                .build();
+    }
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public BaseErrorResponse handleJsonParseException(HttpMessageNotReadableException ex) {
         return ErrorResponse.builder()

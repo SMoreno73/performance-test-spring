@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(indexes = @Index(columnList = "title"))
 @Setter
 @Getter
 @AllArgsConstructor
@@ -23,6 +22,7 @@ public class Survey {
     @Column(columnDefinition = "INT(11)")
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT")

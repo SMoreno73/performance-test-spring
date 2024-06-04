@@ -1,10 +1,7 @@
 package com.riwi.test.api.dto.request;
 
 import com.riwi.test.domain.entities.User;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +26,7 @@ public class SurveyRequest {
     @Min(value = 1, message = "Creator id must be greater than 0")
     private Long creatorId;
 
-    @NotNull(message = "Active cannot be null")
-    private boolean active;
+    @NotBlank(message = "Active cannot be null")
+    @Pattern(regexp = "true|false", message = "The type must be true or false")
+    private String active;
 }
