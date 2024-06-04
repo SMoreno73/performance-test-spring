@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionRequest{
+public class QuestionUpdateRequest {
     @NotBlank(message = "Text must not be null")
     private String text;
 
@@ -30,5 +30,5 @@ public class QuestionRequest{
     @NotNull(message = "Active cannot be null")
     private boolean active;
 
-    private List<OptionQuestionRequest> options;
+    private List<OptionFromQuestionRequest> options;
 }

@@ -9,13 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionRequest{
+public class QuestionUpdate2Request {
     @NotBlank(message = "Text must not be null")
     private String text;
 
@@ -29,6 +27,4 @@ public class QuestionRequest{
 
     @NotNull(message = "Active cannot be null")
     private boolean active;
-
-    private List<OptionQuestionRequest> options;
 }
