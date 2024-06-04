@@ -1,6 +1,8 @@
 package com.riwi.test.api.error_handlers;
 
 
+import com.riwi.test.util.exeptions.IdNotFoundException;
+import com.riwi.test.util.exeptions.OptionsAreNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,6 +33,16 @@ public class BadRequestController {
     public BaseErrorResponse handleIllegalArgumentException(IllegalArgumentException ex) {
         return ErrorResponse.builder()
                 .message("Invalid value for enum: " + ex.getMessage())
+                .status(HttpStatus.BAD_REQUEST.name())
+                .code(HttpStatus.BAD_REQUEST.value())
+                .build();
+    }
+
+    @ExceptionHandler(OptionsAreNull.class)
+    public BaseErrorResponse handleIdNotFound(OptionsAreNull exception) {
+
+        return ErrorResponse.builder()
+                .message(exception.getMessage())
                 .status(HttpStatus.BAD_REQUEST.name())
                 .code(HttpStatus.BAD_REQUEST.value())
                 .build();

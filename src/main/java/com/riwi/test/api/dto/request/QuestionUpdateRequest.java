@@ -30,4 +30,5 @@ public class QuestionUpdateRequest {
     @NotNull(message = "Active cannot be null")
     private boolean active;
 
+    private List<OptionFromQuestionRequest> options;
 }

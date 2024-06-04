@@ -1,6 +1,7 @@
 package com.riwi.test.infraestructure.mappers;
 
 import com.riwi.test.api.dto.request.QuestionRequest;
+import com.riwi.test.api.dto.request.QuestionUpdate2Request;
 import com.riwi.test.api.dto.request.QuestionUpdateRequest;
 import com.riwi.test.api.dto.response.QuestionResponse;
 import com.riwi.test.domain.entities.Question;
@@ -16,13 +17,16 @@ public interface QuestionMapper {
             @Mapping(target = "options", ignore = true),
             @Mapping(target = "surveyId.id", source = "surveyId"),
     })
-    Question Question(QuestionRequest questionRequest);
+    Question toQuestion(QuestionRequest questionRequest);
 
-    QuestionResponse QuestionResponse(Question question);
+    QuestionResponse toQuestionResponse(Question question);
 
     @Mappings({
             @Mapping(target = "options", ignore = true),
             @Mapping(target = "surveyId.id", source = "surveyId"),
     })
     void updateFromQuestionRequest(QuestionUpdateRequest questionRequest, @MappingTarget Question question);
+
+    @Mapping(target = "surveyId.id", source = "surveyId")
+    void updateQuestionRequest(QuestionUpdate2Request questionRequest, @MappingTarget Question question);
 }
