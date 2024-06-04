@@ -1,5 +1,6 @@
 package com.riwi.test.infraestructure.mappers;
 
+import com.riwi.test.api.dto.request.OptionFromQuestionRequest;
 import com.riwi.test.api.dto.request.OptionQuestionRequest;
 import com.riwi.test.api.dto.response.OptionQuestionResponse;
 import com.riwi.test.domain.entities.OptionQuestion;
@@ -11,6 +12,8 @@ import org.mapstruct.MappingTarget;
 public interface OptionQuestionMapper {
     @Mapping(target = "id", ignore = true)
     OptionQuestion toOptionQuestion(OptionQuestionRequest optionQuestionRequest);
+
+    OptionQuestion toOptionQuestion(OptionFromQuestionRequest optionQuestionRequest);
 
     OptionQuestionResponse toOptionQuestionResponse(OptionQuestion optionQuestion);
 

@@ -25,6 +25,7 @@ public class QuestionUpdate2Request {
     @Min(value = 1, message = "Survey id must be greater than 0")
     private Long surveyId;
 
-    @NotNull(message = "Active cannot be null")
-    private boolean active;
+    @NotBlank(message = "Active cannot be null")
+    @Pattern(regexp = "true|false", message = "The type must be true or false")
+    private String active;
 }

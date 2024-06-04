@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -61,5 +62,11 @@ public class SurveyService implements ISurveyService{
             if (survey.isEmpty()) throw new IdNotFoundException("SURVEY", id);
             return survey.map(surveyMapper::toSurveyResponse);
         }
+
+    @Override
+    public Page<SurveyResponse> getByCreationDateBetween(Date startDate, Date endDate, Pageable pageable) {
+        Page<Survey> surveyPage = surveyRepository.findByCreationDateBetween(startDate, endDate, pageable);
+        return surveyPage.map(surveyMapper::toSurveyResponse);
+    }
 }
 
